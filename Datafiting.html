@@ -1,0 +1,458 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Datafiting</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-10-01"><meta name="DC.source" content="Datafiting.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">Part 1</a></li><li><a href="#3">Part 2</a></li><li><a href="#4">Part 3</a></li></ul></div><pre class="codeinput">clc,clear;
+GetRideData;
+</pre><h2>Part 1<a name="2"></a></h2><pre class="codeinput">disp(<span class="string">'Part 1...................................Climb is independent'</span>)
+xclimb = climb;         <span class="comment">%assigning climb to xclimb</span>
+y1Calories = calories;      <span class="comment">%assigning climb to y1Calories</span>
+
+<span class="comment">% Computing the mean and variance of Climb,Calories</span>
+Mean_of_Climb = mean(climb);
+Variance_of_Climb = var(climb);
+disp([<span class="string">'Mean of Climb is '</span>,num2str(Mean_of_Climb)])
+
+disp([<span class="string">'Variance of Climb is '</span>,num2str(Variance_of_Climb)])
+
+disp(<span class="string">'----------------------------------------------------------------'</span>)
+Mean_of_Calories = mean(calories);
+Variance_of_Calories = var(calories);
+
+disp([<span class="string">'Mean of Calories is '</span>,num2str(Mean_of_Calories)])
+
+disp([<span class="string">'Variance of Calories is '</span>,num2str(Variance_of_Calories)])
+
+<span class="comment">%Computing the first order value of a, b fitting the data of climb and</span>
+<span class="comment">%calories</span>
+
+p=polyfit(xclimb,y1Calories,1);
+
+a=p(1);
+b=p(2);
+disp([<span class="string">'a is '</span>, num2str(a)]);
+disp([<span class="string">'b is '</span>, num2str(b)]);
+yLfit1E1=a*xclimb+b;
+<span class="comment">%Computing the correllation coefficient of fitted equation to make</span>
+<span class="comment">%decision, the equation with higher r will be chosen.</span>
+n=numel(y1Calories);        <span class="comment">%number of elements in data</span>
+Mean1E1 = sum(y1Calories)/n;
+
+S1E1 = sum((y1Calories-Mean1E1).^2);
+
+A1E1= sum((yLfit1E1-y1Calories).^2);
+
+r21E1 = 1-A1E1/S1E1;                <span class="comment">%correlation coeficient of y=ab+c</span>
+
+
+<span class="comment">% Computing the first order value of C, d fitting the data of climb and</span>
+<span class="comment">%calories</span>
+<span class="comment">%The Equation y=C*exp^dx is first lineerized by taking natural log of both</span>
+<span class="comment">%sides</span>
+
+pp=polyfit(xclimb,log(y1Calories),1);           <span class="comment">%fitting for Part 1 Equarion 2</span>
+d=pp(1);
+C=exp(pp(2));
+
+disp([<span class="string">'C is '</span>, num2str(C)]);
+disp([<span class="string">'d is '</span>, num2str(d)]);
+yLfitE12=C*exp(d*xclimb);
+
+Mean1E2 = sum(y1Calories)/n;
+
+S1E2 = sum((y1Calories-Mean1E2).^2);
+
+A1E2= sum((yLfitE12-y1Calories).^2);
+
+r21E2 = 1-A1E2/S1E2;        <span class="comment">%correlation coeficient of y=Cepx(dx)</span>
+
+
+figure(1)
+plot(xclimb,y1Calories,<span class="string">'o'</span>,xclimb,yLfit1E1)
+legend(<span class="string">'Measured data'</span>,<span class="string">'Fitted data'</span>,<span class="string">'Location'</span>,<span class="string">'northwest'</span>)
+title([<span class="string">'Calories against Climb with y=ax+b'</span>, <span class="string">' r2 = '</span>, num2str(r21E1)])
+xlabel(<span class="string">'Climb (feet)'</span>)
+ylabel(<span class="string">'Calories (kcal)'</span>)
+hold <span class="string">on</span>
+
+<span class="comment">%At Climbing feet of 6500</span>
+newCfeet = 6500;
+newCal = a*newCfeet+b;
+
+disp(<span class="string">'********************************************************************'</span>)
+disp([<span class="string">'At 6500 Climbing feet,'</span>, num2str(newCal), <span class="string">' kcal is the Calories predicted by the choosen model: y=ax+b'</span>])
+</pre><pre class="codeoutput">Part 1...................................Climb is independent
+Mean of Climb is 1573.0167
+Variance of Climb is 562794.3556
+----------------------------------------------------------------
+Mean of Calories is 2249.15
+Variance of Calories is 689450.9432
+a is 1.0189
+b is 646.4203
+C is 1105.7362
+d is 0.00041186
+********************************************************************
+At 6500 Climbing feet,7269.2 kcal is the Calories predicted by the choosen model: y=ax+b
+</pre><img vspace="5" hspace="5" src="Datafiting_01.png" alt=""> <h2>Part 2<a name="3"></a></h2><pre class="codeinput">disp(<span class="string">'********************************************************************'</span>)
+disp(<span class="string">'********************************************************************'</span>)
+disp(<span class="string">'Part 2...................................Distance is independent'</span>)
+<span class="comment">%Declearation</span>
+xdistance=distance;                 <span class="comment">%Assigning distance to xdistance</span>
+y2calories=calories;                <span class="comment">%Assigning calories to y2calories</span>
+
+pL=polyfit(xdistance,y2calories,1);         <span class="comment">%fitting for y=ax+b</span>
+a2=pL(1);                               <span class="comment">%collecting constant a into a2</span>
+b2=pL(2);                                <span class="comment">%collecting constant b into b2</span>
+
+yLfit2E1calories=a2*xdistance+b2;           <span class="comment">%fitted data</span>
+
+<span class="comment">%Displaying a and b</span>
+disp(<span class="string">'For Part 2'</span>)
+    disp([<span class="string">'a is '</span>, num2str(a2)]);
+disp([<span class="string">'b is '</span>, num2str(b2)]);
+
+<span class="comment">% Equation 2, y=Gx^f was first linearized by taking natural log of both</span>
+<span class="comment">% sides</span>
+p3=polyfit(log(xdistance),log(y2calories),1);          <span class="comment">%first order fitting for log(y)=f*logx+log(G)</span>
+f=p3(1);                            <span class="comment">%collecting f</span>
+G=exp(p3(2));                       <span class="comment">%collecting G</span>
+yLfit2E2 = G*(distance.^f);         <span class="comment">%fitted data</span>
+
+disp(<span class="string">'----------------------------------------------------------------'</span>)
+disp(<span class="string">'For Part 2'</span>)
+    disp([<span class="string">'G is '</span>, num2str(G)]);
+disp([<span class="string">'f is '</span>, num2str(f)]);
+<span class="comment">% Computing Correlation coefficient r22E1 for part 2 equation 1</span>
+n=numel(y2calories);
+Mean2E1 = sum(y2calories)/n;
+
+S2E1 = sum((y2calories-Mean2E1).^2);
+
+A2E1= sum((yLfit2E1calories-y2calories).^2);
+
+r22E1 = 1-A2E1/S2E1;
+
+<span class="comment">% Computing Correlation coefficient r22E2 for Part 2 equation 2</span>
+Mean2E2 = sum(y2calories)/n;
+
+S2E2 = sum((y2calories-Mean2E2).^2);
+
+A2E2= sum((yLfit2E2-y2calories).^2);
+
+r22E2 = 1-A2E2/S2E2;
+
+figure(2)
+
+plot(xdistance,y2calories,<span class="string">'o'</span>,xdistance,yLfit2E1calories,<span class="string">'b'</span>)
+legend(<span class="string">'Measured data'</span>,<span class="string">'Fitted data'</span>,<span class="string">'Location'</span>,<span class="string">'northwest'</span>)
+title([<span class="string">'Calories against Distance Measured Data y=ax+b  '</span>,<span class="string">'r2 ='</span>, num2str(r22E1)])
+xlabel(<span class="string">'Distance (miles)'</span>)
+ylabel(<span class="string">'Calories (kcal)'</span>)
+hold <span class="string">on</span>
+</pre><pre class="codeoutput">********************************************************************
+********************************************************************
+Part 2...................................Distance is independent
+For Part 2
+a is 77.945
+b is -13.8536
+----------------------------------------------------------------
+For Part 2
+G is 78.1008
+f is 0.99695
+</pre><img vspace="5" hspace="5" src="Datafiting_02.png" alt=""> <h2>Part 3<a name="4"></a></h2><pre class="codeinput">disp(<span class="string">'********************************************************************'</span>)
+disp(<span class="string">'********************************************************************'</span>)
+disp(<span class="string">'Part 3...................................Speed is independent'</span>)
+<span class="comment">%Declearation</span>
+xspeed=speed;                       <span class="comment">%Allocating speed to xspeed</span>
+y3calories=calories;                <span class="comment">%Allocating calories to calories</span>
+
+pL3=polyfit(xspeed,y3calories,1);         <span class="comment">%fitting for y=ax+b</span>
+a3=pL3(1);
+b3=pL3(2);
+yLfit3E1calories=a3*xspeed+b3;           <span class="comment">%fitted data</span>
+
+<span class="comment">%Displaying a and b</span>
+disp(<span class="string">'For Part 3'</span>)
+    disp([<span class="string">'a is '</span>, num2str(a3)]);
+disp([<span class="string">'b is '</span>, num2str(b3)]);
+
+Mean_of_Speed = mean(speed);
+Variance_of_Speed = var(speed);
+disp([<span class="string">'Mean of Speed is '</span>,num2str(Mean_of_Speed)])
+
+disp([<span class="string">'Variance of Speed is '</span>,num2str(Variance_of_Speed)])
+
+disp(<span class="string">'----------------------------------------------------------------'</span>)
+Mean_of_Calories = mean(calories);
+Variance_of_Calories = var(calories);
+
+disp([<span class="string">'Mean of Calories is '</span>,num2str(Mean_of_Calories)])
+
+disp([<span class="string">'Variance of Calories is '</span>,num2str(Variance_of_Calories)])
+
+figure(3)
+plot(xspeed,y3calories,<span class="string">'o'</span>,xspeed,yLfit3E1calories,<span class="string">'g'</span>)
+legend(<span class="string">'Measured data'</span>,<span class="string">'Fitted data'</span>,<span class="string">'Location'</span>,<span class="string">'northeast'</span>)
+title(<span class="string">'Calories against Speed Measured Data y=ax+b'</span>)
+xlabel(<span class="string">'Distance(mile)'</span>)
+ylabel(<span class="string">'Calories(kcal)'</span>)
+hold <span class="string">on</span>
+</pre><pre class="codeoutput">********************************************************************
+********************************************************************
+Part 3...................................Speed is independent
+For Part 3
+a is -264.3182
+b is 6157.5344
+Mean of Speed is 14.7867
+Variance of Speed is 0.3727
+----------------------------------------------------------------
+Mean of Calories is 2249.15
+Variance of Calories is 689450.9432
+</pre><img vspace="5" hspace="5" src="Datafiting_03.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+clc,clear;
+GetRideData;
+%% Part 1
+disp('Part 1...................................Climb is independent')
+xclimb = climb;         %assigning climb to xclimb
+y1Calories = calories;      %assigning climb to y1Calories
+
+% Computing the mean and variance of Climb,Calories
+Mean_of_Climb = mean(climb);
+Variance_of_Climb = var(climb);
+disp(['Mean of Climb is ',num2str(Mean_of_Climb)])
+
+disp(['Variance of Climb is ',num2str(Variance_of_Climb)])
+
+disp('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH')
+Mean_of_Calories = mean(calories);
+Variance_of_Calories = var(calories);
+
+disp(['Mean of Calories is ',num2str(Mean_of_Calories)])
+
+disp(['Variance of Calories is ',num2str(Variance_of_Calories)])
+
+%Computing the first order value of a, b fitting the data of climb and
+%calories
+
+p=polyfit(xclimb,y1Calories,1);
+
+a=p(1);
+b=p(2);
+disp(['a is ', num2str(a)]);
+disp(['b is ', num2str(b)]);
+yLfit1E1=a*xclimb+b;
+%Computing the correllation coefficient of fitted equation to make
+%decision, the equation with higher r will be chosen.
+n=numel(y1Calories);        %number of elements in data
+Mean1E1 = sum(y1Calories)/n;
+
+S1E1 = sum((y1Calories-Mean1E1).^2);
+
+A1E1= sum((yLfit1E1-y1Calories).^2);
+
+r21E1 = 1-A1E1/S1E1;                %correlation coeficient of y=ab+c
+
+
+% Computing the first order value of C, d fitting the data of climb and
+%calories
+%The Equation y=C*exp^dx is first lineerized by taking natural log of both
+%sides
+
+pp=polyfit(xclimb,log(y1Calories),1);           %fitting for Part 1 Equarion 2
+d=pp(1);
+C=exp(pp(2));
+
+disp(['C is ', num2str(C)]);
+disp(['d is ', num2str(d)]);
+yLfitE12=C*exp(d*xclimb);
+
+Mean1E2 = sum(y1Calories)/n;
+
+S1E2 = sum((y1Calories-Mean1E2).^2);
+
+A1E2= sum((yLfitE12-y1Calories).^2);
+
+r21E2 = 1-A1E2/S1E2;        %correlation coeficient of y=Cepx(dx)
+
+
+figure(1)
+plot(xclimb,y1Calories,'o',xclimb,yLfit1E1)
+legend('Measured data','Fitted data','Location','northwest')
+title(['Calories against Climb with y=ax+b', ' r2 = ', num2str(r21E1)])
+xlabel('Climb (feet)')
+ylabel('Calories (kcal)')
+hold on
+
+%At Climbing feet of 6500
+newCfeet = 6500;
+newCal = a*newCfeet+b;
+
+disp('********************************************************************')
+disp(['At 6500 Climbing feet,', num2str(newCal), ' kcal is the Calories predicted by the choosen model: y=ax+b'])
+
+%% Part 2
+disp('********************************************************************')
+disp('********************************************************************')
+disp('Part 2...................................Distance is independent')
+%Declearation
+xdistance=distance;                 %Assigning distance to xdistance
+y2calories=calories;                %Assigning calories to y2calories
+
+pL=polyfit(xdistance,y2calories,1);         %fitting for y=ax+b
+a2=pL(1);                               %collecting constant a into a2
+b2=pL(2);                                %collecting constant b into b2
+
+yLfit2E1calories=a2*xdistance+b2;           %fitted data
+
+%Displaying a and b
+disp('For Part 2') 
+    disp(['a is ', num2str(a2)]);
+disp(['b is ', num2str(b2)]);
+
+% Equation 2, y=Gx^f was first linearized by taking natural log of both
+% sides
+p3=polyfit(log(xdistance),log(y2calories),1);          %first order fitting for log(y)=f*logx+log(G)
+f=p3(1);                            %collecting f
+G=exp(p3(2));                       %collecting G
+yLfit2E2 = G*(distance.^f);         %fitted data
+
+disp('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH')
+disp('For Part 2') 
+    disp(['G is ', num2str(G)]);
+disp(['f is ', num2str(f)]);
+% Computing Correlation coefficient r22E1 for part 2 equation 1
+n=numel(y2calories);
+Mean2E1 = sum(y2calories)/n;
+
+S2E1 = sum((y2calories-Mean2E1).^2);
+
+A2E1= sum((yLfit2E1calories-y2calories).^2);
+
+r22E1 = 1-A2E1/S2E1;
+
+% Computing Correlation coefficient r22E2 for Part 2 equation 2
+Mean2E2 = sum(y2calories)/n;
+
+S2E2 = sum((y2calories-Mean2E2).^2);
+
+A2E2= sum((yLfit2E2-y2calories).^2);
+
+r22E2 = 1-A2E2/S2E2;
+
+figure(2)
+
+plot(xdistance,y2calories,'o',xdistance,yLfit2E1calories,'b')
+legend('Measured data','Fitted data','Location','northwest')
+title(['Calories against Distance Measured Data y=ax+b  ','r2 =', num2str(r22E1)])
+xlabel('Distance (miles)')
+ylabel('Calories (kcal)')
+hold on
+
+%% Part 3
+disp('********************************************************************')
+disp('********************************************************************')
+disp('Part 3...................................Speed is independent')
+%Declearation
+xspeed=speed;                       %Allocating speed to xspeed
+y3calories=calories;                %Allocating calories to calories
+
+pL3=polyfit(xspeed,y3calories,1);         %fitting for y=ax+b
+a3=pL3(1);
+b3=pL3(2);
+yLfit3E1calories=a3*xspeed+b3;           %fitted data
+
+%Displaying a and b
+disp('For Part 3') 
+    disp(['a is ', num2str(a3)]);
+disp(['b is ', num2str(b3)]);
+
+Mean_of_Speed = mean(speed);
+Variance_of_Speed = var(speed);
+disp(['Mean of Speed is ',num2str(Mean_of_Speed)])
+
+disp(['Variance of Speed is ',num2str(Variance_of_Speed)])
+
+disp('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH')
+Mean_of_Calories = mean(calories);
+Variance_of_Calories = var(calories);
+
+disp(['Mean of Calories is ',num2str(Mean_of_Calories)])
+
+disp(['Variance of Calories is ',num2str(Variance_of_Calories)])
+
+figure(3)
+plot(xspeed,y3calories,'o',xspeed,yLfit3E1calories,'g')
+legend('Measured data','Fitted data','Location','northeast')
+title('Calories against Speed Measured Data y=ax+b')
+xlabel('Distance(mile)')
+ylabel('Calories(kcal)')
+hold on
+
+
+##### SOURCE END #####
+--></body></html>
